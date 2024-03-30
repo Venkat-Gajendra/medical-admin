@@ -1,28 +1,26 @@
 <?php
 
-    session_start();
+session_start();
 
-    if(isset($_SESSION["user"])){
-        if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
-            header("location: ../login.php");
-        }
+// Redirect to login page if user is not logged in or not an admin
+if (!isset($_SESSION["user"]) || $_SESSION['usertype'] != 'a') {
+    header("location: ../login.php");
+    exit();
+}
 
-    }else{
-        header("location: ../login.php");
-    }
-    
-    
-    if($_GET){
-        //import database
-        include("../connection.php");
-        $id=$_GET["id"];
-        //$result001= $database->query("select * from schedule where scheduleid=$id;");
-        //$email=($result001->fetch_assoc())["docemail"];
-        $sql= $database->query("delete from appointment where appoid='$id';");
-        //$sql= $database->query("delete from doctor where docemail='$email';");
-        //print_r($email);
-        header("location: appointment.php");
-    }
+// Include database connection
+include("../connection.php");
 
+// Delete appointment if id is provided in GET request
+if ($_GET && isset($_GET["id"]) && is_numeric($_GET["id"])) {
+    $id = $_GET["id"];
+    $sql = $database->query("DELETE FROM appointment WHERE appoid = $id;");
+    header("location: appointment.php");
+} else {
+    header("location: appointment.php?error=invalid_id");
+}
+
+// Close database connection
+$database->close();
 
 ?>
