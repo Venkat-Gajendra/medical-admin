@@ -1,1 +1,10 @@
-body { background: url(../img/bodybg/bg3.jpg) repeat left top; }
+/* Use a semantic class name for better accessibility and readability */
+.page-background {
+  /* Use a CSS variable for easier maintenance */
+  --body-background: url(../img/bodybg/bg3.jpg) repeat left top;
+
+  /* Apply the background to the body element */
+  body {
+    background: var(--body-background);
+  }
+}
