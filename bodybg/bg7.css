@@ -1,1 +1,9 @@
-body { background: url(../img/bodybg/bg7.png) repeat left top; }
+/* Use a semantic class name for the body element */
+body.blog-post {
+  /* Use a CSS variable for the URL to make it easier to change in the future */
+  background-image: var(--body-bg-image, url('../img/bodybg/bg7.png'));
+  /* Repeat the image both horizontally and vertically */
+  background-repeat: repeat;
+  /* Position the image at the top left corner of the element */
+  background-position: left top;
+}
