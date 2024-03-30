@@ -1,4 +1,7 @@
-body { 
-	background-image: url(../img/bodybg/bg2.png);
-	background-repeat: repeat; 
+body {
+  background-image: url('/img/bodybg/bg2.png');
+  background-repeat: repeat;
+  /* Adding the following properties for better accessibility and readability */
+  background-color: #f2f2f2; /* Adding a light background color to improve readability */
+  color: #333; /* Adding a dark text color to improve contrast */
 }
