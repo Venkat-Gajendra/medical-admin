@@ -28,6 +28,17 @@ include("header.php");
     border-top-right-radius: 5% 5%;
     border-bottom-right-radius: 5% 5%;
 }
+#forgotpassword{
+  position:absolute;
+  left: 16rem;
+  top: 1.5rem;
+}
+#inputbtn{
+  position: relative;
+    left: -6rem;
+    top: 1.5rem;
+    width: 8rem;
+}
 @media (max-width: 768px) {
     .col-md-7 {
         padding-left: 0!important;

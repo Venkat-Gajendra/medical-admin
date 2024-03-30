@@ -24,6 +24,69 @@ if(isset($_POST['update_data']))
  if($result)
   header("Location:updated.php");
 }
+require_once 'vendor/autoload.php'; 
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+if(isset($_POST['excel_genrate']))
+{
+   // Connect to the database
+   $con = mysqli_connect("localhost", "root", "", "myhmsdb");
+
+   // Check connection
+   if (mysqli_connect_errno()) {
+       echo "Failed to connect to MySQL: " . mysqli_connect_error();
+       exit();
+   }
+
+   // Prepare the query using a prepared statement
+   $query = "SELECT * FROM patreg";
+   $stmt = mysqli_prepare($con, $query);
+   mysqli_stmt_execute($stmt);
+   $result = mysqli_stmt_get_result($stmt);
+
+  //  // Create a new Excel file
+  //  $excel = new Spreadsheet();
+   
+  //  // Add a new sheet
+  //  $sheet = $excel->getActiveSheet();
+
+  //  // Write the data to the sheet
+  //  while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+  //      $sheet->fromArray($row, null, 'A1');
+  //  }
+
+  //  // Save the Excel file
+  //  $writer = new Xlsx($excel);
+  //  $writer->save("patreg.xlsx");
+
+  //  // Send the Excel file back to the browser
+  //  header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+  //  header("Content-Disposition: attachment; filename=\"patreg.xlsx\"");
+  //  readfile("patreg.xlsx");
+  //  exit;
+  $file = fopen("patreg.csv", "w");
+
+
+  
+    // Write the headers to the CSV file
+    $headers = ["pid"	,"fname",	"lname"	,"gender",	    "email"	,    "contact"	,    "password",	    "cpassword",	    "dob"];    fputcsv($file, $headers);
+
+    // Write the data to the CSV file
+    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        fputcsv($file, $row);
+    }
+
+    // Close the CSV file
+    fclose($file);
+
+    // Send the CSV file back to the browser
+    header("Content-Type: text/csv");
+    header("Content-Disposition: attachment; filename=\"patreg.csv\"");
+    readfile("patreg.csv");
+    exit;
+  
+}
 
 // function display_docs()
 // {

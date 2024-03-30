@@ -108,7 +108,12 @@ if(isset($_POST['docsub1']))
   background-color: #3c50c1;
   border-color: #3c50c1;
 }
-@media (max-width: 768px) {
+#excelbtn{
+    position: absolute;
+    top: -3.4rem;
+    left: 40rem;
+}
+    @media (max-width: 768px) {
   #dashboard{
     max-width: 80%!important;
     margin-top: 3%!important;
@@ -127,6 +132,11 @@ h3{
 }
 .col-sm-4{
   left: 5% !important;
+}
+#excelbtn{
+    position: absolute;
+    ttop: -2rem;
+    left: 7rem;
 }
 }
   </style>
@@ -280,6 +290,7 @@ h3{
         <div class="row">
         <div class="col-md-10"><input type="text" name="doctor_contact" placeholder="Enter Email ID" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="doctor_search_submit" class="btn btn-primary" value="Search"></div></div>
+
       </form>
     </div>
               <table class="table table-hover">
@@ -327,9 +338,21 @@ h3{
       <form class="form-group" action="patientsearch.php" method="post">
         <div class="row">
         <div class="col-md-10"><input type="text" name="patient_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="patient_search_submit" class="btn btn-primary" value="Search"></div></div>
+        
+        <div class="col-md-2"><input type="submit" name="patient_search_submit" class="btn btn-primary" value="Search"></div>
+        
+      </div>
+      </form>
+      <form class="form-group" action="newfunc.php" method="post">
+        <div class="row">
+          <div class="col-md-2">
+        <input id="excelbtn" type="submit" name="excel_genrate" class="btn btn-primary" value="Generate Excel Sheet">
+        </div>
+      </div>
       </form>
     </div>
+      <!-- <div class="col-md-2"><input id ="excelbtn" type= "button" name="excel_genrate" class="btn btn-primary"value="Generate Excel Sheet"></div> -->
+      <!-- <input id="excelbtn" type="button" name="excel_genrate" class="btn btn-primary" value="Generate Excel Sheet"> -->
         
               <table class="table table-hover">
                 <thead>

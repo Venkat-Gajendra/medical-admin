@@ -1,0 +1,14 @@
+pid,fname,lname,gender,email,contact,password,cpassword,dob
+1,Ram,Kumar,Male,ram@gmail.com,9876543210,ram123,ram123,2024-03-27
+2,Alia,Bhatt,Female,alia@gmail.com,8976897689,alia123,alia123,2024-03-27
+3,Shahrukh,khan,Male,shahrukh@gmail.com,8976898463,shahrukh123,shahrukh123,2024-03-27
+4,Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,kishan123,kishan123,2024-03-27
+5,Gautam,Shankararam,Male,gautam@gmail.com,9070897653,gautam123,gautam123,2024-03-27
+6,Sushant,Singh,Male,sushant@gmail.com,9059986865,sushant123,sushant123,2024-03-27
+7,Nancy,Deborah,Female,nancy@gmail.com,9128972454,nancy123,nancy123,2024-03-27
+8,Kenny,Sebastian,Male,kenny@gmail.com,9809879868,kenny123,kenny123,2024-03-27
+9,William,Blake,Male,william@gmail.com,8683619153,william123,william123,2024-03-27
+10,Peter,Norvig,Male,peter@gmail.com,9609362815,peter123,peter123,2024-03-27
+11,Shraddha,Kapoor,Female,shraddha@gmail.com,9768946252,shraddha123,shraddha123,2024-03-27
+12,venkat,ve,Male,,9346282356,123456,123456,2024-03-27
+14,v,v,Male,v@v.com,1234567890,123456,123456,2024-03-05
