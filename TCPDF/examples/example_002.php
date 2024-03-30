@@ -1,31 +1,10 @@
 <?php
-//============================================================+
-// File name   : example_002.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 002 for TCPDF class
-//               Removing Header and Footer
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: Removing Header and Footer
- * @author Nicola Asuni
- * @since 2008-03-04
- */
+// Turn on error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Include the main TCPDF library (search for installation path).
-require_once('tcpdf_include.php');
+require 'tcpdf_include.php';
 
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -54,15 +33,15 @@ $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
 // set some language-dependent strings (optional)
-if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
+if (file_exists(dirname(__FILE__).'/lang/eng.php')) {
+    require dirname(__FILE__).'/lang/eng.php';
+    $pdf->setLanguageArray($l);
 }
 
 // ---------------------------------------------------------
 
-// set font
-$pdf->SetFont('times', 'BI', 20);
+// set font to Open Sans
+$pdf->SetFont('opensans', '', 12);
 
 // add a page
 $pdf->AddPage();
@@ -81,7 +60,3 @@ $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);
 
 //Close and output PDF document
 $pdf->Output('example_002.pdf', 'I');
-
-//============================================================+
-// END OF FILE
-//============================================================+
