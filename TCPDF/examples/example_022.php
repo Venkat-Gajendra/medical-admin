@@ -1,146 +1,108 @@
 <?php
-//============================================================+
-// File name   : example_022.php
-// Begin       : 2008-03-04
-// Last Update : 2013-05-14
-//
-// Description : Example 022 for TCPDF class
-//               CMYK colors
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
 
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: CMYK colors.
- * @author Nicola Asuni
- * @since 2008-03-04
- */
+// Example of CMYK, RGB and Grayscale colors using TCPDF
 
-// Include the main TCPDF library (search for installation path).
-require_once('tcpdf_include.php');
+// Include the main TCPDF library
+if (!require_once('tcpdf_include.php')) {
+    die('Error: could not include tcpdf_include.php.');
+}
 
-// create new PDF document
+// Create a new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
-// set document information
+// Set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Nicola Asuni');
 $pdf->SetTitle('TCPDF Example 022');
 $pdf->SetSubject('TCPDF Tutorial');
 $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
-// set default header data
+// Set default header data
 $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 022', PDF_HEADER_STRING);
 
-// set header and footer fonts
+// Set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
 
-// set default monospaced font
+// Set default monospaced font
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
-// set margins
+// Set margins
 $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
 
-// set auto page breaks
+// Set auto page breaks
 $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
 
-// set image scale factor
+// Set image scale factor
 $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
-// set some language-dependent strings (optional)
+// Set some language-dependent strings (optional)
 if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
-	require_once(dirname(__FILE__).'/lang/eng.php');
-	$pdf->setLanguageArray($l);
+    require_once(dirname(__FILE__).'/lang/eng.php');
+    $pdf->setLanguageArray($l);
 }
 
-// ---------------------------------------------------------
-
-// check also the following methods:
-// SetDrawColorArray()
-// SetFillColorArray()
-// SetTextColorArray()
-
-// set font
+// Set font
 $pdf->SetFont('helvetica', 'B', 18);
 
-// add a page
+// Add a page
 $pdf->AddPage();
 
 $pdf->Write(0, 'Example of CMYK, RGB and Grayscale colours', '', 0, 'L', true, 0, false, false, 0);
 
-// define style for border
+// Define style for border
 $border_style = array('all' => array('width' => 2, 'cap' => 'square', 'join' => 'miter', 'dash' => 0, 'phase' => 0));
 
 // --- CMYK ------------------------------------------------
 
-$pdf->SetDrawColor(50, 0, 0, 0);
-$pdf->SetFillColor(100, 0, 0, 0);
-$pdf->SetTextColor(100, 0, 0, 0);
-$pdf->Rect(30, 60, 30, 30, 'DF', $border_style);
-$pdf->Text(30, 92, 'Cyan');
+$cmyk_colors = array(
+    array(50, 0, 0, 0), // Cyan
+    array(0, 50, 0, 0), // Magenta
+    array(0, 0, 50, 0), // Yellow
+    array(0, 0, 0, 50), // Black
+);
 
-$pdf->SetDrawColor(0, 50, 0, 0);
-$pdf->SetFillColor(0, 100, 0, 0);
-$pdf->SetTextColor(0, 100, 0, 0);
-$pdf->Rect(70, 60, 30, 30, 'DF', $border_style);
-$pdf->Text(70, 92, 'Magenta');
-
-$pdf->SetDrawColor(0, 0, 50, 0);
-$pdf->SetFillColor(0, 0, 100, 0);
-$pdf->SetTextColor(0, 0, 100, 0);
-$pdf->Rect(110, 60, 30, 30, 'DF', $border_style);
-$pdf->Text(110, 92, 'Yellow');
-
-$pdf->SetDrawColor(0, 0, 0, 50);
-$pdf->SetFillColor(0, 0, 0, 100);
-$pdf->SetTextColor(0, 0, 0, 100);
-$pdf->Rect(150, 60, 30, 30, 'DF', $border_style);
-$pdf->Text(150, 92, 'Black');
+foreach ($cmyk_colors as $color) {
+    $pdf->SetDrawColor($color[0], $color[1], $color[2], $color[3]);
+    $pdf->SetFillColor($color[0], $color[1], $color[2], $color[3]);
+    $pdf->SetTextColor($color[0], $color[1], $color[2], $color[3]);
+    $pdf->Rect(30, 60 + (30 * (array_search($color, $cmyk_colors))), 30, 30, 'DF', $border_style);
+    $pdf->Text(30, 92 + (30 * (array_search($color, $cmyk_colors))), $color[0] . ',' . $color[1] . ',' . $color[2] . ',' . $color[3]);
+}
 
 // --- RGB -------------------------------------------------
 
-$pdf->SetDrawColor(255, 127, 127);
-$pdf->SetFillColor(255, 0, 0);
-$pdf->SetTextColor(255, 0, 0);
-$pdf->Rect(30, 110, 30, 30, 'DF', $border_style);
-$pdf->Text(30, 142, 'Red');
+$rgb_colors = array(
+    array(255, 127, 127), // Red
+    array(127, 255, 127), // Green
+    array(127, 127, 255), // Blue
+);
 
-$pdf->SetDrawColor(127, 255, 127);
-$pdf->SetFillColor(0, 255, 0);
-$pdf->SetTextColor(0, 255, 0);
-$pdf->Rect(70, 110, 30, 30, 'DF', $border_style);
-$pdf->Text(70, 142, 'Green');
-
-$pdf->SetDrawColor(127, 127, 255);
-$pdf->SetFillColor(0, 0, 255);
-$pdf->SetTextColor(0, 0, 255);
-$pdf->Rect(110, 110, 30, 30, 'DF', $border_style);
-$pdf->Text(110, 142, 'Blue');
+foreach ($rgb_colors as $color) {
+    $pdf->SetDrawColor($color[0], $color[1], $color[2]);
+    $pdf->SetFillColor($color[0], $color[1], $color[2]);
+    $pdf->SetTextColor($color[0], $color[1], $color[2]);
+    $pdf->Rect(100, 60 + (30 * (array_search($color, $rgb_colors))), 30, 30, 'DF', $border_style);
+    $pdf->Text(100, 92 + (30 * (array_search($color, $rgb_colors))), $color[0] . ',' . $color[1] . ',' . $color[2]);
+}
 
 // --- GRAY ------------------------------------------------
 
-$pdf->SetDrawColor(191);
-$pdf->SetFillColor(127);
-$pdf->SetTextColor(127);
-$pdf->Rect(30, 160, 30, 30, 'DF', $border_style);
-$pdf->Text(30, 192, 'Gray');
+$gray_colors = array(
+    array(191), // Gray
+);
 
-// ---------------------------------------------------------
+foreach ($gray_colors as $color) {
+    $pdf->SetDrawColor($color[0]);
+    $pdf->SetFillColor($color[0]);
+    $pdf->SetTextColor($color[0]);
+    $pdf->Rect(170, 60, 30, 30, 'DF', $border_style);
+    $pdf->Text(170, 92, $color[0]);
+}
 
-//Close and output PDF document
-$pdf->Output('example_022.pdf', 'I');
-
-//============================================================+
-// END OF FILE
-//============================================================+
+// Close and output PDF document
+if (!$pdf->Output('example_022.pdf', 'I')) {
+    die('Error: could not output the PDF.');
+}
