@@ -1,26 +1,27 @@
 <?php
-	$currDir=dirname(__FILE__);
-	include("$currDir/defaultLang.php");
-	include("$currDir/language.php");
-	include("$currDir/lib.php");
-	include_once("$currDir/header.php");
+	$currentDirectory = dirname(__FILE__);
+	require_once("$currentDirectory/defaultLang.php");
+	require_once("$currentDirectory/language.php");
+	require_once("$currentDirectory/lib.php");
+	require_once("$currentDirectory/header.php");
 
-	if($_GET['redir']==1){
+	if (isset($_GET['redir']) && $_GET['redir'] == 1) {
 		echo '<META HTTP-EQUIV="Refresh" CONTENT="5;url=index.php?signIn=1">';
 	}
 ?>
 
 <center>
 	<div style="width: 500px; text-align: left;">
-		<h1 class="TableTitle"><?php echo $Translation['thanks']; ?></h1>
+		<h1 class="TableTitle"><?php echo htmlspecialchars($Translation['thanks']); ?></h1>
 
 		<img src="handshake.jpg"><br><br>
 		<div class="TableBody">
-			<?php echo $Translation['sign in no approval']; ?>
-			</div><br>
+			<?php printf($Translation['sign in no approval'], htmlspecialchars($Translation['sign in'])); ?>
+		</div><br>
 		<div class="TableBody">
-			<?php echo $Translation['sign in wait approval']; ?>
-			</div>
+			<?php printf($Translation['sign in wait approval'], htmlspecialchars($Translation['sign in'])); ?>
 		</div>
-	</center>
-<?php include_once("$currDir/footer.php"); ?>
+	</div>
+</center>
+
+<?php require_once("$currentDirectory/footer.php"); ?>
