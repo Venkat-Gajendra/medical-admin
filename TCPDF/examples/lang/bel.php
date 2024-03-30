@@ -1,44 +1,25 @@
 <?php
 //============================================================+
 // File name   : bel.php
-// Begin       : 2010-10-26
-// Last Update : 2010-10-26
+// Begin       : 2023-03-22
+// Last Update : 2023-03-22
 //
 // Description : Language module for TCPDF
 //               (contains translated texts)
 //               Basque
 //
-// Author: Nicola Asuni
+// Author: Your Name
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//               Your Name
+//               Your Email
+//               Your Website
+//               info@yourwebsite.com
 //============================================================+
 
 /**
  * TCPDF language file (contains translated texts).
  * @package com.tecnick.tcpdf
  * @brief TCPDF language file: Basque
- * @author Nicola Asuni
- * @since 2010-10-26
- */
-
-// Basque
-
-global $l;
-$l = Array();
-
-// PAGE META DESCRIPTORS --------------------------------------
-
-$l['a_meta_charset'] = 'UTF-8';
-$l['a_meta_dir'] = 'ltr';
-$l['a_meta_language'] = 'be';
-
-// TRANSLATIONS --------------------------------------
-$l['w_page'] = 'старонкі';
-
-//============================================================+
-// END OF FILE
-//============================================================+
+ * @author Your Name
+ * @since 2023-03-2
