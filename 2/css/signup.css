@@ -1,57 +1,65 @@
+/* Add comments to explain the code */
 
-body{
-    margin: 2%;
-    background-color: #F6F7FA;
-}
-.container{
-    width: 45%;
-    background-color: white;
-    border: 1px solid rgb(235, 235, 235);
-    border-radius: 8px;
-    margin: 0;
-    padding: 0;
-    box-shadow: 0 3px 5px 0 rgba(240, 240, 240, 0.3);
-    animation: transitionIn-Y-over 0.5s;
-
-}
-td{
-    text-align: center;
-
-}
-.header-text{
-    font-weight: 600;
-    font-size: 30px;
-    letter-spacing: -1px;
-    margin-bottom: 10px;
+body {
+  /* Set margin to 2% on all sides */
+  margin: 2%;
+  /* Set background color */
+  background-color: #F6F7FA;
 }
 
-.sub-text{
-    font-size: 15px;
-    color: rgb(138, 138, 138);
+.container {
+  /* Set container width */
+  width: 45%;
+  /* Set container background color */
+  background-color: white;
+  /* Set border style */
+  border: 1px solid rgb(235, 235, 235);
+  /* Set border radius */
+  border-radius: 8px;
+  /* Remove margin and padding */
+  margin: 0;
+  padding: 0;
+  /* Set box shadow */
+  box-shadow: 0 3px 5px 0 rgba(240, 240, 240, 0.3);
+  /* Add animation for transition */
+  animation: transitionIn-Y-over 0.5s;
 }
 
-.form-label{
-    color: rgb(44, 44, 44);
-    text-align: left;
-    font-size: 14px;
-}
-.label-td{
-    text-align: left;
-    padding-top: 10px;
+/* Center align text */
+td {
+  text-align: center;
 }
 
-.hover-link1{
-    font-weight: bold;
+/* Style header text */
+.header-text {
+  font-weight: 600;
+  font-size: 30px;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
 }
 
-
-.hover-link1:hover{
-    opacity: 0.8;
-    transition: 0.5s;
-
-
-}.login-btn{
-    margin-top: 15px;
-    margin-bottom: 15px;
-    width: 100%;
+/* Style sub-text */
+.sub-text {
+  font-size: 15px;
+  color: rgb(138, 138, 138);
 }
+
+/* Style form labels */
+.form-label {
+  color: rgb(44, 44, 44);
+  text-align: left;
+  font-size: 14px;
+}
+
+/* Style label td */
+.label-td {
+  text-align: left;
+  padding-top: 10px;
+}
+
+/* Style hover links */
+.hover-link1 {
+  font-weight: bold;
+}
+
+/* Add opacity transition on hover
