@@ -1,17 +1,22 @@
-.module_top, .module_bottom{
+/* Hide helper classes */
+.module-hide {
   visibility: hidden;
 }
 
+/* Table styles */
 table {
-  border: 0px !important;
+  border: 0 !important;
 }
 
-.module_content img{
-  min-width: 70px;
+/* Module content styles */
+.module-content {
+  /* Set minimum width for images */
+  img {
+    min-width: 70px;
+  }
+
+  /* Set font size for h2 elements */
+  h2 {
+    font-size: 30px;
+  }
 }
-
-.module_content h2{
-  font-size: 30px;
-}
-
-
