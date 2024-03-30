@@ -1,19 +1,22 @@
-<?php 
+<?php
+
 class Calendar {
 
-    private $year;
-    private $month;
-    private $startDayOfWeek;
-    private $numDaysInMonth;
+    private int $year;
+    private int $month;
+    private int $startDayOfWeek;
+    private int $numDaysInMonth;
+    private \PDO $database;
 
-    public function __construct($year = null, $month = null) {
+    public function __construct(?int $year = null, ?int $month = null) {
         $this->year = $year ?? date('Y');
         $this->month = $month ?? date('n');
         $this->startDayOfWeek = date('N', mktime(0, 0, 0, $this->month, 1, $this->year));
         $this->numDaysInMonth = date('t', mktime(0, 0, 0, $this->month, 1, $this->year));
+        $this->database = new \PDO('mysql:host=localhost;dbname=testdb;charset=utf8', 'username', 'password');
     }
 
-    public function generateCalendar($dates) {
+    public function generateCalendar(): void {
         echo '<h2>' . date('F Y', mktime(0, 0, 0, $this->month, 1, $this->year)) . '</h2>';
         echo '<table>';
         echo '<tr>';
@@ -38,9 +41,9 @@ class Calendar {
                 echo '<td></td>';
             } else {
                 $class = ($i == date('j') && $this->year == date('Y') && $this->month == date('n')) ? 'current' : '';
-                $class .= (in_array($this->year . '-' . $this->month . '-' . $i, $dates)) ? ' event' : '';
+                $class .= (in_array(sprintf('%d-%02d-%d', $this->year, $this->month, $i), $this->getDates())) ? ' event' : '';
                 echo '<td>';
-                echo '<button class="calenderbtn "value="' . $class . '" onclick="showAvailableTimes(\'' . $this->year . '-' . $this->month . '-' . $i . '\')">' . $i . '</button>';
+                echo '<button class="calenderbtn "value="' . $class . '" onclick="showAvailableTimes(\'' . sprintf('%d-%02d-%d', $this->year, $this->month, $i) . '\')">' . $i . '</button>';
                 echo '</td>';
             }
             $dayCounter++;
@@ -50,45 +53,43 @@ class Calendar {
         echo '</table>';
     }
 
-    public function getPreviousMonthLink() {
+    public function getPreviousMonthLink(): string {
         $year = ($this->month == 1) ? $this->year - 1 : $this->year;
         $month = ($this->month == 1) ? 12 : $this->month - 1;
         return '?year=' . $year . '&month=' . $month;
     }
 
-    public function getNextMonthLink() {
+    public function getNextMonthLink(): string {
         $year = ($this->month == 12) ? $this->year + 1 : $this->year;
         $month = ($this->month == 12) ? 1 : $this->month + 1;
         return '?year=' . $year . '&month=' . $month;
     }
-    function addCssFile($filePath) {
-        echo '<link rel="stylesheet" href="' . $filePath . '">';}
-}
 
+    private function getDates(): array {
+        $sql = "SELECT scheduledate FROM schedule";
+        $stmt = $this->database->query($sql);
+
+        if ($stmt === false) {
+            throw new \PDOException('Database query failed');
+        }
+
+        $dates = [];
+        while ($row = $stmt->fetch(\PDO::FETCH_ASSOC)) {
+            $dates[] = $row['scheduledate'];
+        }
+        return $dates;
+    }
+}
 
 $year = isset($_GET['year']) ? intval($_GET['year']) : date('Y');
 $month = isset($_GET['month']) ? intval($_GET['month']) : date('n');
 
 $calendar = new Calendar($year, $month);
-$calendar->addCssFile('css/calender.css');
 
 echo '<div>';
 echo '<a class= "revm" href="' . $calendar->getPreviousMonthLink() . '"><button>Previous Month</button></a>';
 echo ' | ';
 echo '<a class="nexm" href="' . $calendar->getNextMonthLink() . '"><button>Next Month</button></a>';
 echo '</div>';
-include("connection.php");
 
-$sql = "SELECT scheduledate FROM schedule";
-$result = $database->query($sql);
-
-if ($result->num_rows > 0) {
-$dates = [];
-while ($row = $result->fetch_assoc()) {
-    $dates[] = $row['scheduledate'];
-}
-$calendar->generateCalendar($dates);
-} else {
-echo "No scheduled dates found.";
-}
-?>
+$calendar->generateCalendar();
