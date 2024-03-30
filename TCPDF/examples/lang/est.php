@@ -1,44 +1,33 @@
 <?php
-//============================================================+
-// File name   : est.php
-// Begin       : 2010-10-26
-// Last Update : 2010-10-26
-//
-// Description : Language module for TCPDF
-//               (contains translated texts)
-//               Estonian
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
 
 /**
  * TCPDF language file (contains translated texts).
+ *
+ * This file contains the translated texts for the TCPDF library in Estonian.
+ *
  * @package com.tecnick.tcpdf
  * @brief TCPDF language file: Estonian
  * @author Nicola Asuni
  * @since 2010-10-26
  */
 
-// Estonian
+namespace com\tecnick\tcpdf;
 
-global $l;
-$l = Array();
+// Initialize the language array if it doesn't already exist
+if (!isset($tcpdf_lang)) {
+    $tcpdf_lang = array();
+}
 
 // PAGE META DESCRIPTORS --------------------------------------
 
-$l['a_meta_charset'] = 'UTF-8';
-$l['a_meta_dir'] = 'ltr';
-$l['a_meta_language'] = 'et';
+$tcpdf_lang['a_meta_charset'] = 'UTF-8';
+$tcpdf_lang['a_meta_dir'] = 'ltr';
+$tcpdf_lang['a_meta_language'] = 'et';
 
 // TRANSLATIONS --------------------------------------
-$l['w_page'] = 'lehekülg';
+$tcpdf_lang['w_page'] = 'lehekülg';
 
 //============================================================+
 // END OF FILE
 //============================================================+
+
