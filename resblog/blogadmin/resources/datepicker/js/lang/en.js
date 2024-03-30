@@ -1,42 +1,38 @@
-var fdLocale = {
-        months:[
-                "January",
-                "February",
-                "March",
-                "April",
-                "May",
-                "June",
-                "July",
-                "August",
-                "September",
-                "October",
-                "November",
-                "December"
-                ],
-        fullDay:[
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-                ],
-        /* Only stipulate the dayAbbr should the first letter of the fullDay not suffice
+const fdLocale = {
+  months: [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ],
+  fullDay: [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ],
+  // If the first letter of fullDay is sufficient, you don't need to specify dayAbbr
+  // dayAbbr: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
-        dayAbbr:[],
-        */
-
-        /* Only stipulate the firstDayOfWeek should the first day not be Monday
-
-        firstDayOfWeek:0,
-        */
-        titles:[
-                "Previous month",
-                "Next month",
-                "Previous year",
-                "Next year",
-                "Today",
-                "Show Calendar"
-                ]
+  // If the first day is Monday, you don't need to specify firstDayOfWeek
+  // firstDayOfWeek: 0,
+  titles: [
+    "Previous month",
+    "Next month",
+    "Previous year",
+    "Next year",
+    "Today",
+    "Show Calendar"
+  ]
 };
