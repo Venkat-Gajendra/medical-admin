@@ -1,45 +1,78 @@
-/*These transition are from youtube*/
+/*
+This code contains CSS animations for various transitions.
+These animations are originally from YouTube.
+*/
 
-@keyframes transitionIn-X{
-    from {
-            opacity: 0;
-            transform: translateX(-10px);
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
 
-    }
-
-    to {
-            opacity: 1;
-            transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
-    
 
+@keyframes fadeInFromTopOver {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
 
-@keyframes transitionIn-Y-over{
-    from {
-            opacity: 0;
-            transform: translateY(-10px);
-
-    }
-
-    to {
-            opacity: 1;
-            transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-    
-@keyframes transitionIn-Y-bottom{
-    from {
-            opacity: 0;
-            transform: translateY(30px);
 
-    }
+@keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
-    to {
-            opacity: 1;
-            transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-    
 
-/* Transition end */
+@-webkit-keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    -webkit-transform: translateX(-10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes fadeInFromTopOver {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeInFromBottom {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+/* Add
