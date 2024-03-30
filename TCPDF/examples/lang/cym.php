@@ -1,38 +1,36 @@
 <?php
 //============================================================+
-// File name   : urd.php
-// Begin       : 2004-03-03
-// Last Update : 2010-10-26
+// File name   : urd-cy.php
+// Begin       : 2023-03-22
+// Last Update :
 //
 // Description : Language module for TCPDF
-//               (contains translated texts)
-//               Welsh
+//               Welsh (Cymraeg) translation
 //
-// Author: Nicola Asuni
+// Author: [Your Name]
 //
 // (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
+//               [Your Name]
+//               [Your Company]
+//               [your-website.com]
+//               [your-email@example.com]
 //============================================================+
 
 /**
  * TCPDF language file (contains translated texts).
  * @package com.tecnick.tcpdf
- * @brief TCPDF language file: Welsh
- * @author Nicola Asuni
- * @since 2004-03-03
+ * @brief TCPDF language file: Welsh (Cymraeg)
+ * @author [Your Name]
+ * @since 2023-03-22
  */
 
-// Welsh
+// Welsh (Cymraeg)
 
-global $l;
-$l = Array();
+$l = array();
 
 // PAGE META DESCRIPTORS --------------------------------------
 
-$l['a_meta_charset'] = 'UTF-8';
+$l['a_meta_charset'] = 'utf-8';
 $l['a_meta_dir'] = 'ltr';
 $l['a_meta_language'] = 'cy';
 
