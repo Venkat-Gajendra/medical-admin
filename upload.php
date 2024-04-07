@@ -41,18 +41,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $url=$target_dir.$title.'.mp4';
         $con=mysqli_connect("localhost","root","","myhmsdb");
-        $pid = $_SESSION['pid'];
-        $email = $_SESSION['email'];
         $result = mysqli_query($con,"INSERT INTO vidlib( title, context, url) VALUES ('$title','$subtext','$url');");
         if ($result){
         if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_dir . $title . ".mp4")) {
-            echo "The file ". htmlspecialchars( basename( $_FILES["video"]["name"])). " has been uploaded.";
+            
+            echo '<script>alert("The file ' . htmlspecialchars(basename($_FILES["video"]["name"])) . ' has been uploaded.");</script>';
+            header("Location: sub-admin-panel.php");
+            exit();
         } else {
-            echo "Sorry, there was an error uploading your file.";
+            echo '<script>alert("Sorry, there was an error uploading your file.");</script>';
+
         }
     }
     else{
-        echo "Sorry, there was an error uploading your file. Mysql error :". mysqli_error($con);
+        echo '<script>alert("Sorry, there was an error uploading your file. Mysql error: ' . mysqli_error($con) . '");</script>';
     }
     }
     
