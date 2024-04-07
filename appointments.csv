@@ -1,0 +1,15 @@
+fname,lname,gender,email,contact,doctor,docFees,appdate,apptime
+venkat,ve,Male,,9346282356,"Apollo Vanagaram",500,2024-03-31,10:00:00
+venkat,ve,Male,,9346282356,"Apollo Vanagaram",0,2024-03-31,08:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Dinesh,700,2020-03-27,15:00:00
+William,Blake,Male,william@gmail.com,8683619153,Tiwary,450,2020-03-26,14:00:00
+William,Blake,Male,william@gmail.com,8683619153,Kumar,800,2020-03-26,12:00:00
+Alia,Bhatt,Female,alia@gmail.com,8976897689,Ganesh,550,2020-03-21,10:00:00
+Gautam,Shankararam,Male,gautam@gmail.com,9070897653,Ganesh,550,2020-03-19,20:00:00
+Shraddha,Kapoor,Female,shraddha@gmail.com,9768946252,ashok,500,2020-02-29,20:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Dinesh,700,2020-02-28,12:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Dinesh,700,2020-02-28,10:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Ganesh,550,2020-02-26,15:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Amit,1000,2020-02-19,03:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Ganesh,550,2020-02-14,10:00:00
+Kishan,Lal,Male,kishansmart0@gmail.com,8838489464,Ganesh,550,0000-00-00,14:00:00

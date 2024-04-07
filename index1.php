@@ -40,6 +40,11 @@ include("header.php");
     width: 8rem;
 }
 @media (max-width: 768px) {
+  #forgotpassword {
+    position: absolute;
+    left: 11rem;
+    top: 2.3rem;}
+    
     .col-md-7 {
         padding-left: 0!important;
         width: auto;
@@ -66,8 +71,8 @@ include("header.php");
         border-radius: 0;
     }
     #inputbtn {
-      margin-top: 10px;
-    left: -90;
+      margin-top: 13px;
+    left: -159px;
     position: relative;
     }
     .navbar-brand {

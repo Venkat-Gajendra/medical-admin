@@ -1,6 +1,9 @@
 <?php
 session_start();
 $con=mysqli_connect("localhost","root","","myhmsdb");
+if (mysqli_connect_errno()) {
+  die("Failed to connect to MySQL: " . mysqli_connect_error());
+}
 if(isset($_POST['patsub1'])){
 	$fname=$_POST['fname'];
   $lname=$_POST['lname'];
@@ -10,30 +13,38 @@ if(isset($_POST['patsub1'])){
 	$password=$_POST['password'];
   $cpassword=$_POST['cpassword'];
   $date=$_POST['date'];
-  if($password==$cpassword){
+
+  $query1 = "select * from patreg where email='$email';";
+  $result1 = mysqli_query($con,$query1);
+  $row = mysqli_fetch_assoc($result1);          
+ 
+  if($row){
+    header("Location:error1.php");
+  } else if($password==$cpassword){
   	$query="insert into patreg(fname,lname,gender,email,contact,password,cpassword,dob) values ('$fname','$lname','$gender','$email','$contact','$password','$cpassword','$date');";
     $result=mysqli_query($con,$query);
     if($result){
+      echo "1";
+
+      header("Location:admin-panel.php");
         $_SESSION['username'] = $_POST['fname']." ".$_POST['lname'];
         $_SESSION['fname'] = $_POST['fname'];
         $_SESSION['lname'] = $_POST['lname'];
         $_SESSION['gender'] = $_POST['gender'];
         $_SESSION['contact'] = $_POST['contact'];
         $_SESSION['email'] = $_POST['email'];
+        $query1 = "select * from patreg where email='$email';";
+        $result1 = mysqli_query($con,$query1);
+        $row = mysqli_fetch_assoc($result1); 
+        $pid = mysqli_insert_id($con);
+        $_SESSION['pid'] = $pid;
         header("Location:admin-panel.php");
     } 
-
-    $query1 = "select * from patreg;";
-    $result1 = mysqli_query($con,$query1);
-    if($result1){
-      $_SESSION['pid'] = $row['pid'];
-    }
-
-  }
-  else{
+  } else {
     header("Location:error1.php");
   }
 }
+
 if(isset($_POST['update_data']))
 {
 	$contact=$_POST['contact'];

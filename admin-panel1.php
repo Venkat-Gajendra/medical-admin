@@ -113,6 +113,11 @@ if(isset($_POST['docsub1']))
     top: -3.4rem;
     left: 40rem;
 }
+#excelbtn1{
+    position: absolute;
+    top: -3.4rem;
+    left: 40rem;
+}
     @media (max-width: 768px) {
   #dashboard{
     max-width: 80%!important;
@@ -134,6 +139,11 @@ h3{
   left: 5% !important;
 }
 #excelbtn{
+    position: absolute;
+    ttop: -2rem;
+    left: 7rem;
+}
+#excelbtn1{
     position: absolute;
     ttop: -2rem;
     left: 7rem;
@@ -426,7 +436,7 @@ h3{
                   <?php 
                     $con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
-                    $query = "select * from prestb";
+                    $query = "select * from prestb order by appdate desc limit 70";
                     $result = mysqli_query($con,$query);
                     while ($row = mysqli_fetch_array($result)){
                       $doctor = $row['doctor'];
@@ -474,6 +484,13 @@ h3{
         <div class="col-md-10"><input type="text" name="app_contact" placeholder="Enter Contact" class = "form-control"></div>
         <div class="col-md-2"><input type="submit" name="app_search_submit" class="btn btn-primary" value="Search"></div></div>
       </form>
+      <form class="form-group" action="newfunc1.php" method="post">
+        <div class="row">
+          <div class="col-md-2">
+        <input id="excelbtn1" type="submit" name="genrate_appointment" class="btn btn-primary" value="Generate Excel Sheet">
+        </div>
+      </div>
+      </form>
     </div>
         
               <table class="table table-hover">
@@ -499,7 +516,7 @@ h3{
                     $con=mysqli_connect("localhost","root","","myhmsdb");
                     global $con;
 
-                    $query = "select * from appointmenttb;";
+                    $query = "select * from appointmenttb order by appdate desc limit 70;";
                     $result = mysqli_query($con,$query);
                     while ($row = mysqli_fetch_array($result)){
                   ?>

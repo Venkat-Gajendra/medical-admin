@@ -64,6 +64,7 @@ if(isset($_POST['app-submit']))
       echo "<script>alert('Select a time or date in the future!');</script>";
   }
   
+  echo "<script>registerbill('$pid');</script>";
 }
 
 if(isset($_GET['cancel']))
@@ -179,7 +180,7 @@ function get_specs(){
     
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Global Hospital </a>
+  <a class="navbar-brand" href="#"><i class="fa fa-user-plus" aria-hidden="true"></i> Best of id's </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -230,6 +231,9 @@ h3{
      <ul class="navbar-nav mr-auto">
        <li class="nav-item">
         <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="subvid.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Subscribe</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#"></a>
@@ -446,8 +450,21 @@ h3{
                   </div><br><br>
 
                   <div class="col-md-4"><label>Appointment Date</label></div>
-                  <div class="col-md-8"><input type="date" class="form-control datepicker" name="appdate"></div><br><br>
-
+                  <div class="col-md-8">
+                    <input type="date" class="form-control datepicker" name="appdate" min="<?php echo date('Y-m-d'); ?>">
+                  </div>
+                  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                  <script>
+                    $(document).ready(function() {
+                          $('#appdate').on('change', function() {
+                          var selectedDate = new Date($(this).val());
+                          if (selectedDate.getDay() === 0) { // 0 is Sunday
+                                  alert('Sundays are not allowed. Please select another date.');
+                                  $(this).val('');
+        }
+    });
+});
+</script>
                   <div class="col-md-4"><label>Appointment Time</label></div>
                   <div class="col-md-8">
                     <!-- <input type="time" class="form-control" name="apptime"> -->
@@ -463,7 +480,7 @@ h3{
                   </div><br><br>
 
                   <div class="col-md-4">
-                    <input type="submit" name="app-submit" value="Create new entry" class="btn btn-primary" id="inputbtn">
+                    <input type="submit" name="app-submit" value="Create new Appointment" class="btn btn-primary" id="inputbtn">
                   </div>
                   <div class="col-md-8"></div>                  
                 </div>

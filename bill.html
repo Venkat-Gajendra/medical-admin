@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Add Text to PDF</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <button onclick="addTextToPDF()">Add Text to PDF</button>
+  <br>
+  <iframe id="pdfViewer" style="width: 100%; height: 500px;"></iframe>
+
+  <script>
+    async function addTextToPDF() {
+      const existingPdfUrl = 'letterpad.pdf'; // Path to your existing PDF file
+      const doc = new jsPDF();
+
+      // Load existing PDF into a new document
+      const pdf = await fetch(existingPdfUrl);
+      const pdfBlob = await pdf.blob();
+      const fileReader = new FileReader();
+      fileReader.onload = async () => {
+        const existingPdfData = new Uint8Array(fileReader.result);
+        const existingDoc = await PDFDocument.load(existingPdfData);
+        const existingPages = existingDoc.getPages();
+
+        // Loop through each page of the existing PDF and add it to the new document
+        for (let i = 0; i < existingPages.length; i++) {
+          const existingPage = existingPages[i];
+          const [width, height] = existingPage.getSize();
+          const pdfDataUri = await existingPage.saveAsBase64DataUri();
+          doc.addImage(pdfDataUri, 'JPEG', 0, 0, width, height);
+          if (i < existingPages.length - 1) {
+            doc.addPage();
+          }
+        }
+
+        // Add text to the new document
+        doc.text('Hello', 10, 10);
+
+        // Display the new PDF in the iframe
+        const pdfDataUri = doc.output('datauristring');
+        const pdfViewer = document.getElementById('pdfViewer');
+        pdfViewer.src = pdfDataUri;
+      };
+      fileReader.readAsArrayBuffer(pdfBlob);
+    }
+  </script>
+</body>
+</html>
