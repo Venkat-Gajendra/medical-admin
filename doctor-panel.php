@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php 
+
 include('func1.php');
 $con=mysqli_connect("localhost","root","","myhmsdb");
 $doctor = $_SESSION['dname'];

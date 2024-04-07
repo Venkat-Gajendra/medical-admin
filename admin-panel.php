@@ -211,6 +211,12 @@ function get_specs(){
     align-content: center!important;
     left: 10%!important;
 }  
+#sm5key{
+  position: relative;
+  top:1rem !important;
+  left:1rem !important;
+  margin-top: 1%!important;
+}
 h3{
   margin-left: 10%!important;
 }
@@ -268,7 +274,7 @@ h3{
       <div class="tab-pane fade  show active" id="list-dash" role="tabpanel" aria-labelledby="list-dash-list">
         <div class="container-fluid container-fullw bg-white" >
               <div class="row">
-               <div class="col-sm-4" style="left: 5%">
+               <div class="col-sm-5" style="left: 5%">
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body">
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-terminal fa-stack-1x fa-inverse"></i> </span>
@@ -287,7 +293,7 @@ h3{
                   </div>
                 </div>
 
-                <div class="col-sm-4" style="left: 10%">
+                <div class="col-sm-5" style="left: 10%">
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body" >
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-paperclip fa-stack-1x fa-inverse"></i> </span>
@@ -303,7 +309,7 @@ h3{
                 </div>
                 </div>
 
-                <div class="col-sm-4" style="left: 20%;margin-top:5%">
+                <div class="col-sm-5" style="left: 5%;margin-top:5%">
                   <div class="panel panel-white no-radius text-center">
                     <div class="panel-body" >
                       <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span>
@@ -319,6 +325,23 @@ h3{
                 </div>
                 
          
+                <div id ="sm5key" class="col-sm-5" style="left: 26rem;margin-top:-12rem">
+                  <div class="panel panel-white no-radius text-center">
+                    <div class="panel-body" >
+                    <img width="50" height="50" src="https://img.icons8.com/ios-filled/50/password1.png" alt="password1"/>
+                    <!-- <i href="https://icons8.com/icon/10497/password-key" id="showKey" width=100 height=180></i> -->
+                    <!-- <span class="fa-stack fa-2x"> <i class="fa fa-square fa-stack-2x text-primary"></i> <i class="fa fa-list-ul fa-stack-1x fa-inverse"></i> </span> -->
+                      <h4 class="StepTitle" style="margin-top: 5%;">Subscribe</h2>
+                    
+                      <p class="cl-effect-1">
+                        <a href="subscribe.php" >
+                          Subscribe
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
             </div>
           </div>
 

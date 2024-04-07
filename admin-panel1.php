@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <?php 
+session_start();
 $con=mysqli_connect("localhost","root","","myhmsdb");
-
+if(!isset($_SESSION['se']) || $_SESSION['se'] !== 1){
+  session_destroy();
+  header("Location: logout1.php");
+  exit;
+}
 include('newfunc.php');
 
 if(isset($_POST['docsub']))
@@ -113,6 +118,12 @@ if(isset($_POST['docsub1']))
     top: -3.4rem;
     left: 40rem;
 }
+.btnforupload{
+  position: absolute;
+    left: 86rem;
+    top: 0.6rem;
+    z-index: 111001;
+}
 #excelbtn1{
     position: absolute;
     top: -3.4rem;
@@ -125,6 +136,12 @@ if(isset($_POST['docsub1']))
     align-content: center!important;
     left: 10%!important;
 }  
+.btnforupload{
+  position: absolute;
+    left: 11rem;
+    top: 0.59rem;
+    z-index: 8888;
+}
 h3{
   margin-left: 10%!important;
 }
@@ -181,9 +198,14 @@ h3{
       <a class="list-group-item list-group-item-action" href="#list-settings" id="list-adoc-list"  role="tab" data-toggle="list" aria-controls="home">Add Clinic</a>
       <a class="list-group-item list-group-item-action" href="#list-settings1" id="list-ddoc-list"  role="tab" data-toggle="list" aria-controls="home">Delete Clinic</a>
       <a class="list-group-item list-group-item-action" href="#list-mes" id="list-mes-list"  role="tab" data-toggle="list" aria-controls="home">Queries</a>
+
       
     </div><br>
   </div>
+  <div class="btnforupload">
+  <button type="button" class="btn btn-primary" onclick="window.location.href='sub-admin-panel.php'" id="uploadvid">Upload videos</button>
+</div>
+
   <div class="col-md-8" style="margin-top: 3%;">
     <div class="tab-content" id="nav-tabContent" style="width: 950px;">
 
