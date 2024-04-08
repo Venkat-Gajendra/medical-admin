@@ -198,6 +198,7 @@ h3{
       <a class="list-group-item list-group-item-action" href="#list-settings" id="list-adoc-list"  role="tab" data-toggle="list" aria-controls="home">Add Clinic</a>
       <a class="list-group-item list-group-item-action" href="#list-settings1" id="list-ddoc-list"  role="tab" data-toggle="list" aria-controls="home">Delete Clinic</a>
       <a class="list-group-item list-group-item-action" href="#list-mes" id="list-mes-list"  role="tab" data-toggle="list" aria-controls="home">Queries</a>
+      <a class="list-group-item list-group-item-action" onclick="window.location.href='addsub.php';" id="list-sub-list"  role="tab" data-toggle="list" aria-controls="home">Add Subscribers</a>
 
       
     </div><br>
@@ -623,13 +624,14 @@ h3{
 
        <div class="tab-pane fade" id="list-mes" role="tabpanel" aria-labelledby="list-mes-list">
 
-         <div class="col-md-8">
-      <form class="form-group" action="messearch.php" method="post">
-        <div class="row">
-        <div class="col-md-10"><input type="text" name="mes_contact" placeholder="Enter Contact" class = "form-control"></div>
-        <div class="col-md-2"><input type="submit" name="mes_search_submit" class="btn btn-primary" value="Search"></div></div>
-      </form>
-    </div>
+        <div class="col-md-8">
+          <form class="form-group" action="messearch.php" method="post">
+          <div class="row">
+            <div class="col-md-10"><input type="text" name="mes_contact" placeholder="Enter Contact" class = "form-control"></div>
+              <div class="col-md-2"><input type="submit" name="mes_search_submit" class="btn btn-primary" value="Search"></div>
+            </div>
+          </form>
+        </div>
         
               <table class="table table-hover">
                 <thead>

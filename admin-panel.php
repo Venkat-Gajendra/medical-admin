@@ -203,6 +203,14 @@ function get_specs(){
   background-color: #3c50c1;
   border-color: #3c50c1;
 }
+#marhead{
+  position: relative;
+  top: 15px;
+  font-size:20px;
+  background-color:#d6940dad;
+  font-family: 'IBM Plex Sans';
+  color:blue;
+}
 
 @media (max-width: 768px) {
   #dashboard{
@@ -248,6 +256,8 @@ h3{
   </div>
 </nav>
   </head>
+  <marquee width="100%" id="marhead"><a href="">Subscript to our newest newsletter and videos for exclusive content</a></marquee>
+
   <style type="text/css">
     button:hover{cursor:pointer;}
     #inputbtn:hover{cursor:pointer;}
@@ -264,6 +274,7 @@ h3{
       <a class="list-group-item list-group-item-action" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Book Appointment</a>
       <a class="list-group-item list-group-item-action" href="#app-hist" id="list-pat-list" role="tab" data-toggle="list" aria-controls="home">Appointment History</a>
       <a class="list-group-item list-group-item-action" href="#list-pres" id="list-pres-list" role="tab" data-toggle="list" aria-controls="home">Prescriptions</a>
+      <a class="list-group-item list-group-item-action" onclick="window.location.href='subscribe.php';" id="list-subpage-list"  role="tab" data-toggle="list" aria-controls="home">Subscribe</a>
       
     </div><br>
   </div>

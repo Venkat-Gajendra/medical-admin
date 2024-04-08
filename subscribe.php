@@ -56,9 +56,21 @@
       <!-- ----------------------------------------------------------------- -->
 
 <?php
-include('func.php');  
+session_start();
+include('func.php');
+$pid= $_SESSION['pid'];
 $con=mysqli_connect("localhost","root","","myhmsdb");
-$pid = $_SESSION['pid'];
+$result = mysqli_query($con,"SELECT * FROM subpid where pid ='$pid';");
+// $num_rows = mysqli_num_rows($result);
+$row = mysqli_fetch_assoc($result) ;
+
+if ( !$row['status'] ) { 
+  header('Location: subtous.php'); 
+  exit();
+} 
+
+$row = mysqli_fetch_assoc($result) ;
+
 $email = $_SESSION['email'];
 $result = mysqli_query($con,"SELECT * FROM vidlib ;");
 while ($row = mysqli_fetch_assoc($result)) {
