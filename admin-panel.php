@@ -122,24 +122,60 @@ if(isset($_GET["generate_bill"])){
   $obj_pdf -> SetAutoPageBreak(TRUE, 10);
   $obj_pdf -> SetFont('helvetica','',12);
   $obj_pdf -> AddPage();
+  $obj_pdf->setJPEGQuality(75);
 
+  // Header
+  // $obj_pdf->Rect(0, 0, 2472, 740, 'F', array(48, 138, 162)); // Rectangle with color code of #308aa2
+  // $obj_pdf->Text(20, 30, 'Best of IDs Healthcare', false, false, 36, '', 0, false, 'C', 'C'); // Text with color code of #308aa2, size 36 pt
+  // $obj_pdf->Text(20, 60, 'Services Pvt Ltd', false, false, 36, '', 0, false, 'C', 'C'); // Text with color code of #308aa2, size 36 pt
+
+  // Image
+  $image_file = 'letterpad.png';
+  $obj_pdf->Image($image_file,2,1,0,0, '', '', FALSE , FALSE);
+
+  // Content
   $content = '';
 
   $content .= '
       <br/>
-      <h2 align ="center"> Best of IDs
-</h2></br>
-      <h3 align ="center"> Bill</h3>
-      
-
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <h3 align="center">BILL</h3>
   ';
+  //$output, $name,$clinic,$aid,$pid,$appdate,$apptime,$fees
  
-  $content .= generate_bill();
-  $obj_pdf -> writeHTML($content);
+ $lis=generate_bill();
+//  $content .='
+//  <table border="1" cellspacing="3" cellpadding="4">
+//     <tr>
+        
+//        <th align="right"><b>ID:'.$lis[4].' </b></th>
+       
+//     </tr>
+//     <tr>
+        
+//        <th > Patient Name :<b>'.$lis[1].' </b></th>
+//        <td >Clinic Name :<b>'.$lis[2].' </b></td>
+//        </tr>
+//     <tr>
+       
+       
+//     </tr>
+//   </table>
+//   ';
+  $content .= $lis;
+  $obj_pdf->writeHTML($content);
   ob_end_clean();
-  $obj_pdf -> Output("bill.pdf",'I');
-
+  $obj_pdf->Output("bill.pdf",'I');
 }
+
 
 function get_specs(){
   $con=mysqli_connect("localhost","root","","myhmsdb");
@@ -246,9 +282,9 @@ h3{
        <li class="nav-item">
         <a class="nav-link" href="logout.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="subvid.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Subscribe</a>
-      </li>
+      </li> -->
        <li class="nav-item">
         <a class="nav-link" href="#"></a>
       </li>
@@ -256,7 +292,7 @@ h3{
   </div>
 </nav>
   </head>
-  <marquee width="100%" id="marhead"><a href="">Subscript to our newest newsletter and videos for exclusive content</a></marquee>
+  <marquee width="100%" id="marhead"><a href="subtous.php">Subscript to our newest newsletter and videos for exclusive content</a></marquee>
 
   <style type="text/css">
     button:hover{cursor:pointer;}
